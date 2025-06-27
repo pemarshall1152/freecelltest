@@ -314,6 +314,9 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		foundation2.setText(foundations.get(1).printCard());
 		foundation3.setText(foundations.get(2).printCard());
 		foundation4.setText(foundations.get(3).printCard());
+		
+		prevActionColumn =false;
+		prevActionFree =false;
 	}
 
 	@Override
@@ -324,14 +327,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 1");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(0).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(0).canAccept(temp)) {
+					table.get(0).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(0).add(temp);
-					redrawTable();
+					if(table.get(0).canAccept(temp)) {
+						table.get(0).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 0;
@@ -341,16 +361,32 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		}
 		if(e.getSource() == tableArea2) {
 			if(prevActionColumn) {
-				System.out.println("test 2");
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(1).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(1).canAccept(temp)) {
+					table.get(1).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(1).add(temp);
-					redrawTable();
+					if(table.get(1).canAccept(temp)) {
+						table.get(1).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 1;
@@ -362,14 +398,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 3");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(2).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(2).canAccept(temp)) {
+					table.get(2).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(2).add(temp);
-					redrawTable();
+					if(table.get(2).canAccept(temp)) {
+						table.get(2).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 2;
@@ -381,14 +434,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 4");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(3).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(3).canAccept(temp)) {
+					table.get(3).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(3).add(temp);
-					redrawTable();
+					if(table.get(3).canAccept(temp)) {
+						table.get(3).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 3;
@@ -400,14 +470,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 5");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(4).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(4).canAccept(temp)) {
+					table.get(4).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(4).add(temp);
-					redrawTable();
+					if(table.get(4).canAccept(temp)) {
+						table.get(4).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 4;
@@ -419,17 +506,34 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 6");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(5).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(5).canAccept(temp)) {
+					table.get(5).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(5).add(temp);
-					redrawTable();
+					if(table.get(5).canAccept(temp)) {
+						table.get(5).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
-					prevTableIndex = 5;
+					prevTableIndex =5;
 				}
 			}
 			prevActionFree= false;
@@ -438,14 +542,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 7");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(6).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(6).canAccept(temp)) {
+					table.get(6).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(6).add(temp);
-					redrawTable();
+					if(table.get(6).canAccept(temp)) {
+						table.get(6).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 6;
@@ -457,14 +578,31 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			System.out.println("test 8");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				table.get(7).add(temp);
-				redrawTable();
-				prevActionColumn = false;
+				if(table.get(7).canAccept(temp)) {
+					table.get(7).add(temp);
+					redrawTable();
+					prevActionColumn = false;
+					prevActionFree = false;
+				}else {
+					table.get(prevTableIndex).add(temp);
+					JOptionPane.showMessageDialog(frame, "bad move");
+					prevActionFree= false;
+					prevActionColumn = false;
+				}
 			}else {
 				if(prevActionFree) {
 					myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-					table.get(7).add(temp);
-					redrawTable();
+					if(table.get(7).canAccept(temp)) {
+						table.get(7).add(temp);
+						redrawTable();
+						prevActionColumn = false;
+						prevActionFree = false;
+					}else {
+						freeCells.get(prevFreeIndex).addCard(temp);
+						JOptionPane.showMessageDialog(frame, "bad move");
+						prevActionFree= false;
+						prevActionColumn = false;
+					}
 				}else {
 					prevActionColumn = true;
 					prevTableIndex = 7;
@@ -487,9 +625,14 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 				prevActionFree= false;
 				prevActionColumn = false;
 			}else{
-				prevActionColumn = false;
-				prevActionFree= true;
-				prevFreeIndex = 0;
+				if(freeCells.get(0).getCurrent()==null) {
+					prevActionFree= false;
+					prevActionColumn = false;
+				}else {
+					prevActionColumn = false;
+					prevActionFree= true;
+					prevFreeIndex = 0;
+				}
 			}
 		}
 		if(e.getSource() == freeCell2) {
@@ -505,9 +648,14 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 				prevActionFree= false;
 				prevActionColumn = false;
 			}else{
-				prevActionColumn = false;
-				prevActionFree= true;
-				prevFreeIndex = 1;
+				if(freeCells.get(1).getCurrent()==null) {
+					prevActionFree= false;
+					prevActionColumn = false;
+				}else {
+					prevActionColumn = false;
+					prevActionFree= true;
+					prevFreeIndex = 1;
+				}
 			}
 		}
 		if(e.getSource() == freeCell3) {
@@ -523,9 +671,14 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 				prevActionFree= false;
 				prevActionColumn = false;
 			}else{
-				prevActionColumn = false;
-				prevActionFree= true;
-				prevFreeIndex = 2;
+				if(freeCells.get(2).getCurrent()==null) {
+					prevActionFree= false;
+					prevActionColumn = false;
+				}else {
+					prevActionColumn = false;
+					prevActionFree= true;
+					prevFreeIndex = 2;
+				}
 			}
 		}
 		if(e.getSource() == freeCell4) {
@@ -541,74 +694,103 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 				prevActionFree= false;
 				prevActionColumn = false;
 			}else{
-				prevActionColumn = false;
-				prevActionFree= true;
-				prevFreeIndex = 3;
+				if(freeCells.get(3).getCurrent()==null) {
+					prevActionFree= false;
+					prevActionColumn = false;
+				}else {
+					prevActionColumn = false;
+					prevActionFree= true;
+					prevFreeIndex = 3;
+				}
 			}
 		}
 		if(e.getSource() == foundation1) {
 			System.out.println("test 13");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				foundations.get(0).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(0).canAccept(temp)) {
+					foundations.get(0).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}else if(prevActionFree) {
 				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-				foundations.get(0).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(0).canAccept(temp)) {
+					foundations.get(0).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}
+			prevActionFree= false;
+			prevActionColumn = false;
 		}
 		if(e.getSource() == foundation2) {
 			System.out.println("test 14");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				foundations.get(1).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(1).canAccept(temp)) {
+					foundations.get(1).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}else if(prevActionFree) {
 				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-				foundations.get(1).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(1).canAccept(temp)) {
+					foundations.get(1).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}
+			prevActionFree= false;
+			prevActionColumn = false;
 		}
 		if(e.getSource() == foundation3) {
 			System.out.println("test 15");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				foundations.get(2).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(2).canAccept(temp)) {
+					foundations.get(2).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}else if(prevActionFree) {
 				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-				foundations.get(2).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(2).canAccept(temp)) {
+					foundations.get(2).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}
+			prevActionFree= false;
+			prevActionColumn = false;
 		}
 		if(e.getSource() == foundation4) {
 			System.out.println("test 15");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
-				foundations.get(3).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(3).canAccept(temp)) {
+					foundations.get(3).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}else if(prevActionFree) {
 				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
-				foundations.get(3).add(temp);
-				redrawTable();
-				prevActionFree= false;
-				prevActionColumn = false;
+				if(foundations.get(3).canAccept(temp)) {
+					foundations.get(3).add(temp);
+					redrawTable();
+				}else {
+					JOptionPane.showMessageDialog(frame, "bad move");
+				}
 			}
+			prevActionFree= false;
+			prevActionColumn = false;
 		}
 		
 	}
