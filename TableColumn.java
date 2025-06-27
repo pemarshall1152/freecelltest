@@ -21,7 +21,6 @@ public class TableColumn extends Pile{
 					return true;
 				}
 			}
-			
 		}else {
 			if(c.getSuit()== myCard.Suit.HEARTS || c.getSuit() == myCard.Suit.DIAMONDS) {
 				if(c.getRank()==(temp.getRank()-1)) {
@@ -48,13 +47,15 @@ public class TableColumn extends Pile{
 		}
 		ArrayList<myCard> returnStack = new ArrayList<>();
 		
-		
 		returnStack = (ArrayList<myCard>) currentCards.subList(currentCards.size()-numCards, currentCards.size()-1);
 		currentCards.removeAll(returnStack);
 		return returnStack;
 	}
 	
 	public myCard popBottom() {
+		if(currentCards.size()==0) {
+			return null;
+		}
 		myCard temp = currentCards.get(currentCards.size()-1);
 		currentCards.remove(currentCards.size()-1);
 		return temp;

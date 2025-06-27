@@ -360,6 +360,7 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 			prevActionFree= false;
 		}
 		if(e.getSource() == tableArea2) {
+			System.out.println("test 2");
 			if(prevActionColumn) {
 				myCard temp = table.get(prevTableIndex).popBottom();
 				if(table.get(1).canAccept(temp)) {
