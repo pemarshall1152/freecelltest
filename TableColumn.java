@@ -8,8 +8,10 @@ public class TableColumn extends Pile{
 	@Override
 	public boolean canAccept(myCard c) {
 		// TODO Auto-generated method stub
+		if(c==null) {
+			return false;
+		}
 		if(currentCards.size() == 0) {
-			currentCards.add(c);
 			return true;
 		}
 		myCard temp = currentCards.get(currentCards.size()-1);
@@ -20,6 +22,12 @@ public class TableColumn extends Pile{
 				}
 			}
 			
+		}else {
+			if(c.getSuit()== myCard.Suit.HEARTS || c.getSuit() == myCard.Suit.DIAMONDS) {
+				if(c.getRank()==(temp.getRank()-1)) {
+					return true;
+				}
+			}
 		}
 		return false;
 	}
@@ -29,6 +37,8 @@ public class TableColumn extends Pile{
 	}
 	
 	public void add(myCard c) {
+		if(c == null)
+			return;
 		currentCards.add(c);
 	}
 	

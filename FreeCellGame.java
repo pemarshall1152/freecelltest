@@ -25,7 +25,8 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 	private Deck cardDeck;
 	private ArrayList<Freecell> freeCells;
 	private ArrayList<TableColumn> table;
-	private static JTextArea foundationArea;
+	private ArrayList<Foundation> foundations;
+	private static JPanel foundationArea;
 	private static JPanel freeCellArea;
 	private static JTextArea tableArea;
 	private static JPanel tableAreaPanel;
@@ -40,6 +41,10 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 	private static JTextArea freeCell2;
 	private static JTextArea freeCell3;
 	private static JTextArea freeCell4;
+	private static JTextArea foundation1;
+	private static JTextArea foundation2;
+	private static JTextArea foundation3;
+	private static JTextArea foundation4;
 	
 	
 	private static JButton newGame;
@@ -81,8 +86,7 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		
 		newGame.addActionListener(currentGame);
 		
-		foundationArea = new JTextArea(10,25);
-		foundationArea.setEditable(false);
+		
 		tableArea = new JTextArea(10,10);
 		tableArea.setEditable(false);
 		tableArea.addMouseListener(currentGame);
@@ -141,6 +145,27 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		freeCellArea.add(freeCell4);
 		
 		
+		foundationArea = new JPanel();
+		
+		foundation1 = new JTextArea(5,5);
+		foundation1.setEditable(false);
+		foundation1.addMouseListener(currentGame);
+		foundation2 = new JTextArea(5,5);
+		foundation2.setEditable(false);
+		foundation2.addMouseListener(currentGame);
+		foundation3 = new JTextArea(5,5);
+		foundation3.setEditable(false);
+		foundation3.addMouseListener(currentGame);
+		foundation4 = new JTextArea(5,5);
+		foundation4.setEditable(false);
+		foundation4.addMouseListener(currentGame);
+		
+		
+		foundationArea.add(foundation1);
+		foundationArea.add(foundation2);
+		foundationArea.add(foundation3);
+		foundationArea.add(foundation4);
+		
 		foundationArea.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"foundation"));
 		freeCellArea.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"freeCellArea"));
 		tableAreaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"tableArea"));
@@ -189,6 +214,11 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		freeCell2.setText(freeCells.get(1).printCard());
 		freeCell3.setText(freeCells.get(2).printCard());
 		freeCell4.setText(freeCells.get(3).printCard());
+		
+		foundation1.setText(foundations.get(0).printCard());
+		foundation2.setText(foundations.get(1).printCard());
+		foundation3.setText(foundations.get(2).printCard());
+		foundation4.setText(foundations.get(3).printCard());
 	}
 
 	private void newGame() {
@@ -265,16 +295,25 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 		table.add(tmpTable);
 		tableArea8.setText(tmpTable.printCards());
 		
-		freeCells = new ArrayList<Freecell>();
 		
+		freeCells = new ArrayList<Freecell>();
 		for(int i = 0; i < 4; i ++) {
 			freeCells.add(new Freecell());
 		}
-		
 		freeCell1.setText(freeCells.get(0).printCard());
 		freeCell2.setText(freeCells.get(1).printCard());
 		freeCell3.setText(freeCells.get(2).printCard());
 		freeCell4.setText(freeCells.get(3).printCard());
+		
+		
+		foundations = new ArrayList<Foundation>();
+		for(int i = 0; i < 4; i ++) {
+			foundations.add(new Foundation());
+		}
+		foundation1.setText(foundations.get(0).printCard());
+		foundation2.setText(foundations.get(1).printCard());
+		foundation3.setText(foundations.get(2).printCard());
+		foundation4.setText(foundations.get(3).printCard());
 	}
 
 	@Override
@@ -505,6 +544,70 @@ public class FreeCellGame extends JFrame implements ActionListener, MouseListene
 				prevActionColumn = false;
 				prevActionFree= true;
 				prevFreeIndex = 3;
+			}
+		}
+		if(e.getSource() == foundation1) {
+			System.out.println("test 13");
+			if(prevActionColumn) {
+				myCard temp = table.get(prevTableIndex).popBottom();
+				foundations.get(0).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}else if(prevActionFree) {
+				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
+				foundations.get(0).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}
+		}
+		if(e.getSource() == foundation2) {
+			System.out.println("test 14");
+			if(prevActionColumn) {
+				myCard temp = table.get(prevTableIndex).popBottom();
+				foundations.get(1).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}else if(prevActionFree) {
+				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
+				foundations.get(1).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}
+		}
+		if(e.getSource() == foundation3) {
+			System.out.println("test 15");
+			if(prevActionColumn) {
+				myCard temp = table.get(prevTableIndex).popBottom();
+				foundations.get(2).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}else if(prevActionFree) {
+				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
+				foundations.get(2).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}
+		}
+		if(e.getSource() == foundation4) {
+			System.out.println("test 15");
+			if(prevActionColumn) {
+				myCard temp = table.get(prevTableIndex).popBottom();
+				foundations.get(3).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
+			}else if(prevActionFree) {
+				myCard temp = freeCells.get(prevFreeIndex).popCurrent();
+				foundations.get(3).add(temp);
+				redrawTable();
+				prevActionFree= false;
+				prevActionColumn = false;
 			}
 		}
 		

@@ -14,5 +14,14 @@ public class Foundation extends Pile{
 	public void add(myCard c) {
 		currentCards.add(c);
 	}
+	
+	public String printCard() {
+		String returnString = "";
+		for(myCard card : currentCards) {
+			returnString = returnString + card.getRank() + " " + card.getSuit() + "\n";
+		}
+		
+		return returnString;
+	}
 
 }
